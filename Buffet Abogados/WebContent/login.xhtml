@@ -1,0 +1,38 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+	
+<h:head>
+	<title>Login Intranet Abogados</title>
+</h:head>
+<body>
+	<h:form id="loginForm">
+			<p:panel>
+			<f:facet name="header">Login</f:facet>
+			<p>Acceda a la Intranet desde aqui</p>
+			
+			<div class="dialog">
+				<h:panelGrid columns="2" rowClasses="prop" columnClasses="name,value">
+					<h:outputLabel for="username">Username</h:outputLabel>
+					<h:inputText id="username" value="#{userBean.username}" />
+					<h:outputLabel for="password">Password</h:outputLabel>
+					<h:inputSecret id="password" value="#{userBean.password}" />
+				</h:panelGrid>
+			</div>
+			
+		<div class="actionButtons">
+		<center>
+			<h:commandButton id="submit" value="Login" action="#{userBean.login}" style="height: 31px; width: 85px; "/>
+		</center>
+		</div>
+			<p>
+				<i>Nota: - </i> Ingrese usuario y password
+			</p>
+		</p:panel>
+	</h:form>
+	
+</body>
+</html>

@@ -1,0 +1,155 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+ xmlns:ui="http://java.sun.com/jsf/facelets"
+ xmlns:h="http://java.sun.com/jsf/html"
+ xmlns:p="http://primefaces.org/ui"
+ xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+	<title>Registro Incidentes Help Desk</title>
+
+</h:head>
+
+<body>
+	<h:outputText value="Registro de Caso"></h:outputText>
+	<h:form>
+
+		<h:panelGrid border="1" columns="4" style="width: 610px; ">
+			<h:outputText value="Nombre de persona que Reporta" style="height: 27px; width: 199px"></h:outputText>
+			
+            <p:inputText id="empleado" value="#{registroIncidentesBean.nombrePersona}" validatorMessage="dato invalido ">
+            	<f:validateRegex pattern="^[a-zA-Z]+$" />
+            </p:inputText>
+            <p:message for="empleado" />
+            
+			<h:outputText></h:outputText>
+			
+			<h:outputText value="Codigo Empleado"></h:outputText>
+			<h:outputText style="height: 28px; width: 207px" value="1001">
+			</h:outputText>
+			<h:outputText value=" "></h:outputText>
+			<h:outputText value=" "></h:outputText>
+			<h:outputText value="Fecha"></h:outputText>
+
+		  <p:calendar value="#{registroIncidentesBean.fecha}" id="popupCal" >
+          <h:outputText id="popupDate">
+          <f:convertDateTime pattern="yyyy-mm-dd"/>
+           </h:outputText>
+           </p:calendar>
+	
+
+			<h:outputText value=" "></h:outputText>
+			<h:outputText value=" "></h:outputText>
+			<h:outputText value="Nombre Empleado"></h:outputText>
+			<h:inputText style="height: 29px;" value="#{registroIncidentesBean.nombre}"> </h:inputText>
+			<h:outputText value="Apellido"></h:outputText>
+			<h:inputText style="height: 29px;" value="#{registroIncidentesBean.apellido}"></h:inputText>
+			<h:outputText value="Phone"></h:outputText>
+			<h:inputText style="height: 29px;" value="#{registroIncidentesBean.phone}">
+			</h:inputText>
+
+			<h:outputText value="Departamento"></h:outputText>
+			<h:selectOneMenu style="width: 122px" id="expmenu3"
+				value="#{registroIncidentesBean.departamento}" required="true"
+				requiredMessage="Please select one technology">
+				<f:selectItem itemLabel="--seleccione--" itemValue="--select--" />
+				<f:selectItem itemLabel="Valle" itemValue="Valle" />
+				<f:selectItem itemLabel="Cundinamarca" itemValue="Cundinamarca" />
+				<f:selectItem itemLabel="San Andres" itemValue="San Andres" />
+				<f:selectItem itemLabel="Antioquia" itemValue="Antioquia" />
+				<f:selectItem itemLabel="CambiarCiudad" itemValue="CambiarCiudad" />
+			</h:selectOneMenu>
+			<h:outputText value="Ciudad" />
+			<h:selectOneMenu style="width: 144px" id="expmenu2"
+				value="#{registroIncidentesBean.ciudad}" required="true"
+				requiredMessage="Please select one technology">
+				<f:selectItem itemLabel="--seleccione--" itemValue="--select--" />
+				<f:selectItem itemLabel="Cali" itemValue="Cali" />
+				<f:selectItem itemLabel="Bogota" itemValue="Bogota" />
+				<f:selectItem itemLabel="San Andres" itemValue="San Andres" />
+				<f:selectItem itemLabel="Medellin" itemValue="Medellin" />
+				<f:selectItem itemLabel="Palmira" itemValue="Palmira" />
+			</h:selectOneMenu>
+			<h:outputText value="e-mail"></h:outputText>
+			<h:inputText style="height: 29px;"
+				value="#{registroIncidentesBean.mail}">
+			</h:inputText>
+			<h:outputText value="Estado"></h:outputText>
+			<h:selectOneMenu style="width: 145px" id="expmenu4"
+				value="#{registroIncidentesBean.estado}" required="true"
+				requiredMessage="Please select one technology">
+				<f:selectItem itemLabel="--seleccionar--" itemValue="--seleccione--" />
+				<f:selectItem itemLabel="En investigacion"
+					itemValue="En investigacion" />
+				<f:selectItem itemLabel="En cierre" itemValue="En cierre" />
+				<f:selectItem itemLabel="Abierta" itemValue="Abierta" />
+				<f:selectItem itemLabel="Cerrada" itemValue="Cerrada" />
+			</h:selectOneMenu>
+			<h:outputText></h:outputText>
+			<h:outputText></h:outputText>
+
+		</h:panelGrid>
+
+
+		<h:panelGrid border="1" columns="4"
+			style="width: 745px; height: 302px">
+
+			<h:outputText value="Catalogo Servicios"></h:outputText>
+			<h:selectOneMenu style="width: 122px" id="expmenu1"
+				value="#{registroIncidentesBean.catalogoServicios}" required="true"
+				requiredMessage="Please select one technology">
+				<f:selectItem itemLabel="--seleccione--" itemValue="--select--" />
+				<f:selectItem itemLabel="Soporte central"
+					itemValue="soporte Central" />
+				<f:selectItem itemLabel="Soporte ciudad" itemValue="Soporte ciudad" />
+				<f:selectItem itemLabel="Soporte tienda" itemValue="Soporte tienda" />
+				<f:selectItem itemLabel="problema inventario"
+					itemValue="problema inventario" />
+				<f:selectItem itemLabel="escalamiento supervisor"
+					itemValue="escalamiento supervisor" />
+			</h:selectOneMenu>
+			<h:outputText></h:outputText>
+			<h:outputText></h:outputText>
+			<h:outputText value="Resumen Caso"></h:outputText>
+			<h:inputText style="width: 239px; "
+				value="#{registroIncidentesBean.resumen}"></h:inputText>
+			<h:outputText></h:outputText>
+			<h:outputText></h:outputText>
+			<h:outputText value="Prioridad"></h:outputText>
+
+			<h:selectOneMenu style="width: 122px" id="expmenu5"
+				value="#{registroIncidentesBean.prioridad}" required="true"
+				requiredMessage="Please select one technology">
+				<f:selectItem itemLabel="--seleccionar--" itemValue="--select--" />
+				<f:selectItem itemLabel="Alta" itemValue="Alta" />
+				<f:selectItem itemLabel="Media" itemValue="Media" />
+				<f:selectItem itemLabel="Baja" itemValue="Baja" />
+			</h:selectOneMenu>
+			<h:outputText></h:outputText>
+			<h:outputText></h:outputText>
+			<h:outputText value="Descripcion Incidente"></h:outputText>
+			<h:inputTextarea value="#{registroIncidentesBean.descripcion}"
+				style="width: 289px; "></h:inputTextarea>
+			<h:outputText value="  "></h:outputText>
+			<center style="width: 226px;">
+				<h:commandButton id="submit" type="submit"
+					value="Registrar Incidente"
+					action="#{registroIncidentesBean.addCaso}">
+				</h:commandButton>
+			</center>
+
+			<center>
+				<h:commandButton id="submit2" type="submit" value="Cerrar" action="index"></h:commandButton>
+			</center>
+			<h:outputText value="  "></h:outputText>
+			<h:outputText value="  "></h:outputText>
+		</h:panelGrid>
+		<h:form>
+			<h:messages></h:messages>
+			<h:outputText value="#{registroIncidentesBean.returnMsg}"></h:outputText>
+		</h:form>
+		<center>
+			<h:outputLink value="index.jsp">Home</h:outputLink>
+		</center>
+	</h:form>
+</body>
+</html>
