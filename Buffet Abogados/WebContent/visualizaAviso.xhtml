@@ -28,8 +28,8 @@
 			<div id="menu_tab">
 				<div class="left_menu_corner"></div>
 				<ul class="menu">
-					<li><a href="/Buffet_Abogados/index.xhtml" class="nav1">
-							Home</a></li>
+					<li><a href="/Buffet_Abogados/index.xhtml" class="nav1">Home</a>
+					</li>
 					<li class="divider"></li>
 					<li>
 						<div class="nav1">Ver Avisos Publicados</div>
@@ -41,16 +41,12 @@
 			<div class="left_content">
 				<div class="title_box">Categorias</div>
 				<ul class="left_menu">
-					<li class="odd"><a href="/Buffet_Abogados/publicaAviso.xhtml">Publicar
-							Avisos</a></li>
-					<li class="even"><a href="/Buffet_Abogados/index.xhtml">Ver
-							Avisos</a></li>
-					<li class="odd"><a href="/Buffet_Abogados/cargarHorario.xhtml">Cargar
-							Horarios Abogados</a></li>
+					<li class="odd"><a href="/Buffet_Abogados/publicaAviso.xhtml">Publicar Avisos</a></li>
+					<li class="even"><a href="/Buffet_Abogados/index.xhtml">Ver	Avisos</a></li>
+					<li class="odd"><a href="/Buffet_Abogados/cargarHorario.xhtml">Cargar Horarios Abogados</a></li>
 					<li class="even"><a href="/Buffet_Abogados/report.xhtml">Reportes</a>
 					</li>
-					<li class="odd"><a href="/Buffet_Abogados/buscarSede.xhtml">Buscar
-							Sedes Buffets</a></li>
+					<li class="odd"><a href="/Buffet_Abogados/buscarSede.xhtml">Buscar Sedes Buffets</a></li>
 					<li class="even"><a href="/Buffet_Abogados/contact.xhtml">Contacto</a>
 					</li>
 				</ul>
@@ -68,7 +64,7 @@
 						
 						<p:outputLabel for="console" value="Usuario:" />
 						<p:selectOneMenu id="console" value="#{selectOneMenuView.console}" style="width:125px">
-							<f:selectItem itemLabel="Select One" itemValue="" />
+							<f:selectItem itemLabel="Seleccione Usuario" itemValue="" />
 							<f:selectItem itemLabel="Xbox One" itemValue="Xbox One" />
 							<f:selectItem itemLabel="PS4" itemValue="PS4" />
 							<f:selectItem itemLabel="Wii U" itemValue="Wii U" />
@@ -85,8 +81,6 @@
 					<p:dataTable var="data" value="#{avisoBean.avisos}">
 						<p:columns value="#{avisoBean.columns}" var="column" columnIndexVar="colIndex">
 						<f:facet name="header">#{column.header}</f:facet>
-						
-						#{data[column.property]}
 						</p:columns>
 					</p:dataTable>
 				</h:form>
@@ -110,38 +104,7 @@
 	<!--  end of main_container -->
 	<div align="center">
 		This template downloaded form <a
-			href="http://all-free-download.com/free-website-templates/">free
-			website templates</a>
-	</div>
-	<div
-		style="position: absolute; visibility: hidden; left: 783px; top: 459px; opacity: 1;">
-		<div></div>
-		<div
-			style="width: auto; font-family: Verdana; font-size: 11px; border: 1px solid rgb(102, 102, 102); padding: 3px; color: rgb(255, 255, 255); opacity: 0.88; background: rgb(112, 119, 120);">
-			Add to cart</div>
-	</div>
-	<div
-		style="position: absolute; visibility: hidden; left: 650px; top: 475px; opacity: 1;">
-		<div></div>
-		<div
-			style="width: auto; font-family: Verdana; font-size: 11px; border: 1px solid rgb(102, 102, 102); padding: 3px; color: rgb(255, 255, 255); opacity: 0.88; background: rgb(112, 119, 120);">
-			Gifts</div>
-	</div>
-	<div
-		style="position: absolute; visibility: hidden; left: 425px; top: 424px; opacity: 1;">
-		<div></div>
-		<div
-			style="width: auto; font-family: Verdana; font-size: 11px; border: 1px solid rgb(102, 102, 102); padding: 3px; color: rgb(255, 255, 255); opacity: 0.88; background: rgb(112, 119, 120);">
-			Specials</div>
-	</div>
-	<div style="position: absolute; visibility: hidden;">
-		<div></div>
-	</div>
-	<div style="position: absolute; visibility: hidden;">
-		<div></div>
-	</div>
-	<div style="position: absolute; visibility: hidden;">
-		<div></div>
+			href="http://all-free-download.com/free-website-templates/">free website templates</a>
 	</div>
 </body>
 </html>
