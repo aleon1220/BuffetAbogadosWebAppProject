@@ -1,50 +1,73 @@
 package service;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
-import javax.persistence.Query;
 
 import entity.Aviso;
 
 public class AvisoService {
+	
+	EntityManagerFactory emf = Persistence.createEntityManagerFactory("buffet");
+	EntityManager em = emf.createEntityManager();
 
-	public String addAviso(Aviso aviso) {
+	public AvisoService() {
+
+	}
+
+	private List<Aviso> listaAvisos = new ArrayList<Aviso>();
+
+	// TO-DO improve jpa code.
+
+	public void insertar(String titulo, String descripcion) {
+		// This block is used for date generation then the JPA insertion
+		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+		Date date = new Date();
+		// so add 1 to make it inclusive
+		String finalDate = dateFormat.format(date);
 		
-		EntityManagerFactory emf = null;
-		EntityManager em = null;
-		emf = Persistence.createEntityManagerFactory("buffet");
-		em = emf.createEntityManager();
 		EntityTransaction et = em.getTransaction();
 		et.begin();
-		System.out.println("before inserting record, getting info: descripcion "+aviso.getDescripcion()+aviso.getTitulo());
+		Aviso aviso = new Aviso();
+		System.out.println("estamos en Service, enviando titulo y descripcion "	+ titulo + " , " + descripcion);
+		aviso.setTitulo(titulo);
+		aviso.setDescripcion(descripcion);
+		aviso.setFechaPublicacion(finalDate);
+		aviso.setUser_idUser(2);
 		em.persist(aviso);
 		et.commit();
-		return "sucess";
-	} // end of addCaso
-	
-	public List<Aviso> getAvisos() throws Exception{
-		
-		EntityManagerFactory emf = null;
-		EntityManager em = null;
-		
-		List<Aviso> avisosList = null;
+	}
 
-		emf = Persistence.createEntityManagerFactory("buffet");
-		em = emf.createEntityManager();
-		//consulta en la BD de la prueba en vista
-		Query query = em.createQuery("select e.idAviso, e.titulo, e.descripcion, e.fechapublicacion from Aviso e");
-		System.out.println("query result"+query.getResultList().toString());
-		avisosList = (List)query.getResultList();
-		
-		if(avisosList.size() == 0){
-			throw new Exception("No existen Avisos");
+	@SuppressWarnings("unchecked")
+	public List<Aviso> getAvisos() throws Exception {
+
+		try {
+			listaAvisos = em.createNamedQuery("Aviso.findAll", Aviso.class)
+					.getResultList();
+			System.out.println("Resultado de Query" + listaAvisos);
+
+			return listaAvisos;
+
+		} catch (Exception e) {
+			return listaAvisos;
 		}
-		
-		return avisosList;
-	} // end of addCaso
-	
-}
+	} // end of getAvisos
+
+	public List<Aviso> getAvisosById(int userId) {
+
+		try {
+			listaAvisos = em.createNamedQuery("Aviso.findById", Aviso.class)
+					.setParameter("userId", userId).getResultList();
+			return listaAvisos;
+		} catch (Exception e) {
+			return listaAvisos;
+		}
+	}// End of getAvisosById
+}// End of AvisoService Class

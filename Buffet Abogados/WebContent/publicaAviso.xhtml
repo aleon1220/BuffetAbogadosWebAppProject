@@ -9,18 +9,19 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:f="http://java.sun.com/jsf/core">
-
 <h:head>
 	<title>Buffet Abogados Leon Rangel</title>
 	<link rel="stylesheet" type="text/css" href="style.css" />
 </h:head>
 
 <h:body>
+
 	<div id="main_container">
 		<div id="header">
 			<div id="logo">
 				<a href="index.xhtml"><img src="images/logo.png" alt=""
-					border="0" width="237" height="140" /></a>
+					border="0" width="237" height="140"
+					style="width: 345px; height: 131px" /></a>
 			</div>
 			<!--  end of oferte_content -->
 		</div>
@@ -32,7 +33,7 @@
 							Home</a></li>
 					<li class="divider"></li>
 					<li>
-						<div class="nav1">  Publicacion de Avisos Juridicos</div>
+						<div class="nav1">Publicacion de Avisos Juridicos</div>
 					</li>
 				</ul>
 				<div class="right_menu_corner"></div>
@@ -43,13 +44,13 @@
 				<ul class="left_menu">
 					<li class="odd"><a href="/Buffet_Abogados/publicaAviso.xhtml">Publicar
 							Avisos</a></li>
-					<li class="even"><a href="/Buffet_Abogados/index.xhtml">Ver
-							Avisos</a></li>
+					<li class="even"><a
+						href="/Buffet_Abogados/visualizaAviso.xhtml">Ver Avisos</a></li>
 					<li class="odd"><a href="/Buffet_Abogados/cargarHorario.xhtml">Cargar
 							Horarios Abogados</a></li>
 					<li class="even"><a href="/Buffet_Abogados/report.xhtml">Reportes</a>
 					</li>
-					<li class="odd"><a href="/Buffet_Abogados/buscarSede.xhtml">Buscar
+					<li class="odd"><a href="/Buffet_Abogados/buscarSede.html">Buscar
 							Sedes Buffets</a></li>
 					<li class="even"><a href="/Buffet_Abogados/contact.xhtml">Contacto</a>
 					</li>
@@ -57,25 +58,28 @@
 			</div>
 			<!--  end of left content -->
 			<div class="center_content">
+				<p
+					style="border-right-style: solid; border-left-style: solid; border-bottom-style: solid; border-top-style: solid; border-top-width: thin; border-right-width: thin; border-bottom-width: thin; border-left-width: thin; font-size: 18px">En
+					esta seccion puede redactar los avisos Juridicos y publicarlos en
+					el sistema.</p>
+				<br /> <br />
 
 				<h:outputText value="Publicar Aviso de caso Juridico"></h:outputText>
-				<h:panelGrid border="1" columns="2" style="width: 615px; height: 106px; ">
+				<br></br>
 
-					<h:outputText value="Titulo"></h:outputText>
-					<h:form>
-					<p:inputText value="#{avisoBean.titulo}"></p:inputText>
-					</h:form>
+				<h:form enctype="multipart/form-data">
+					<p:panel header="Comenta">
+						<p:editor id="editor" widgetVar="editorWidget"	value="#{avisoBean.describe}" width="400" />
 
-					<h:outputText value="Descripcion Aviso"></h:outputText>
-					
-					<h:form style="width: 377px; ">
-						<p:inputTextarea rows="6" cols="33" value="#{avisoBean.descripcion}"></p:inputTextarea>
-					</h:form>
-					
-					<h:outputText></h:outputText>
-					<p:commandButton value="Publicar Aviso" id="submit" type="submit" action="#{avisoBean.createAviso}">
-					</p:commandButton>
-				</h:panelGrid>
+						<h:panelGrid columns="2" style="margin-top: 10px">
+							<p:commandButton value="Enviar" update="growl" icon="ui-icon-disk" action="#{avisoBean.insertar()}" />
+
+							<p:commandButton value="Borrar" type="button" onclick="PF('editorWidget').clear();" icon="ui-icon-close" />
+							<p:growl id="growl" sticky="true" showDetail="true" life="3000" />
+						</h:panelGrid>
+					</p:panel>
+				</h:form>
+
 			</div>
 			<!--  end of center content -->
 			<!--  end of right content -->
@@ -85,48 +89,18 @@
 			<div class="left_footer">
 				<img src="images/footer_logo.png" alt="" width="170" height="49" />
 			</div>
-        <div class="right_footer">
-          <a href="index.xhtml">Inicio</a>
-          <a href="siteMap.xhtml">Mapa Sitio</a> 
-          <a href="contact.xhtml">contactenos</a>
-        </div>
+			<div class="right_footer">
+				<a href="index.xhtml">Inicio</a> <a href="siteMap.html">Mapa
+					Sitio</a> <a href="contact.xhtml">contactenos</a>
+			</div>
 		</div>
 	</div>
 	<!--  end of main_container -->
 	<div align="center">
-		This template downloaded form <a
+		This template downloaded from <a
 			href="http://all-free-download.com/free-website-templates/">free
 			website templates</a>
 	</div>
-	<div
-		style="position: absolute; visibility: hidden; left: 783px; top: 459px; opacity: 1;">
-		<div></div>
-		<div
-			style="width: auto; font-family: Verdana; font-size: 11px; border: 1px solid rgb(102, 102, 102); padding: 3px; color: rgb(255, 255, 255); opacity: 0.88; background: rgb(112, 119, 120);">
-			Add to cart</div>
-	</div>
-	<div
-		style="position: absolute; visibility: hidden; left: 650px; top: 475px; opacity: 1;">
-		<div></div>
-		<div
-			style="width: auto; font-family: Verdana; font-size: 11px; border: 1px solid rgb(102, 102, 102); padding: 3px; color: rgb(255, 255, 255); opacity: 0.88; background: rgb(112, 119, 120);">
-			Gifts</div>
-	</div>
-	<div
-		style="position: absolute; visibility: hidden; left: 425px; top: 424px; opacity: 1;">
-		<div></div>
-		<div
-			style="width: auto; font-family: Verdana; font-size: 11px; border: 1px solid rgb(102, 102, 102); padding: 3px; color: rgb(255, 255, 255); opacity: 0.88; background: rgb(112, 119, 120);">
-			Specials</div>
-	</div>
-	<div style="position: absolute; visibility: hidden;">
-		<div></div>
-	</div>
-	<div style="position: absolute; visibility: hidden;">
-		<div></div>
-	</div>
-	<div style="position: absolute; visibility: hidden;">
-		<div></div>
-	</div>
+
 </h:body>
 </html>

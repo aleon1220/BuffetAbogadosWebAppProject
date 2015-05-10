@@ -19,7 +19,7 @@ public class FileUploadController {
 	private String destination = "C:\\tmp\\";
 
 	public String upload(FileUploadEvent event) {
-		FacesMessage msg = new FacesMessage("Success! ", event.getFile().getFileName() + " is uploaded.");
+		FacesMessage msg = new FacesMessage("Exito! ", event.getFile().getFileName() + " Ha sido subido.");
 		FacesContext.getCurrentInstance().addMessage(null, msg);
 		// Do what you want with the file
 		try {
@@ -27,7 +27,6 @@ public class FileUploadController {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		System.out.println("before return");
 		
 		return "cargarHorarioSuccess";
 

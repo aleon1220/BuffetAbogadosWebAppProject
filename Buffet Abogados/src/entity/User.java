@@ -8,6 +8,7 @@ import javax.persistence.*;
  * The persistent class for the pais database table.
  * 
  */
+
 @Entity
 @Table(name="user")
 public class User implements Serializable {

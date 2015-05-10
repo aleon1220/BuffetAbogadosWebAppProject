@@ -11,6 +11,18 @@
 	xmlns:f="http://java.sun.com/jsf/core">
 
 <h:head>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-62692007-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
 	<title>Consultar Avisos Publicados</title>
 	<link rel="stylesheet" type="text/css" href="style.css" />
 </h:head>
@@ -46,7 +58,7 @@
 					<li class="odd"><a href="/Buffet_Abogados/cargarHorario.xhtml">Cargar Horarios Abogados</a></li>
 					<li class="even"><a href="/Buffet_Abogados/report.xhtml">Reportes</a>
 					</li>
-					<li class="odd"><a href="/Buffet_Abogados/buscarSede.xhtml">Buscar Sedes Buffets</a></li>
+					<li class="odd"><a href="/Buffet_Abogados/buscarSede.html">Buscar Sedes Buffets</a></li>
 					<li class="even"><a href="/Buffet_Abogados/contact.xhtml">Contacto</a>
 					</li>
 				</ul>
@@ -54,7 +66,7 @@
 			<!--  end of left content -->
 			<div class="center_content">
 			
-			<p>Seleccione el usuario de la liste desplegable para consultar los avisos que se han publicado con ese usuario. De click en el boton consultar para obtener el listado de avisos.</p>
+			<p style="border-right-style: solid; border-left-style: solid; border-bottom-style: solid; border-top-style: solid; border-top-width: thin; border-right-width: thin; border-bottom-width: thin; border-left-width: thin; font-size: 18px">En esta seccion puede visualizar todos los avisos publicados en el sistema.  de click en la lista desplegable para ver los abogados registrados en el sistema.</p>
 			<br/>
 			<br/>
 
@@ -63,25 +75,39 @@
 					<h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
 						
 						<p:outputLabel for="console" value="Usuario:" />
-						<p:selectOneMenu id="console" value="#{selectOneMenuView.console}" style="width:125px">
-							<f:selectItem itemLabel="Seleccione Usuario" itemValue="" />
-							<f:selectItem itemLabel="Xbox One" itemValue="Xbox One" />
-							<f:selectItem itemLabel="PS4" itemValue="PS4" />
-							<f:selectItem itemLabel="Wii U" itemValue="Wii U" />
+						
+						<p:selectOneMenu id="console" value="#{avisoBean.selectedUser}" style="width:125px">
+							<f:selectItem itemLabel="Ver Usuarios" itemValue="" />
+							<f:selectItem itemLabel="Andres Leon" itemValue="andres" />
+							<f:selectItem itemLabel="Robancio Veraz" itemValue="robancio" />
+							<f:selectItem itemLabel="Lionel Hutz" itemValue="hutz" />
 						</p:selectOneMenu>
 						
 						<h:outputText></h:outputText>
 						<h:outputText></h:outputText>
-						<center>
-						<p:commandButton value="Consultar" id="submit" type="submit" action="#{avisoBean.obtainAvisoByUser}">
-						</p:commandButton>
-						</center>
 					</h:panelGrid>
 
-					<p:dataTable var="data" value="#{avisoBean.avisos}">
-						<p:columns value="#{avisoBean.columns}" var="column" columnIndexVar="colIndex">
-						<f:facet name="header">#{column.header}</f:facet>
-						</p:columns>
+					<p:dataTable value="#{avisoBean.getAllAvisos()}" var="aviso" >
+									
+						<p:column headerText="Id Aviso">
+							<h:outputText value="#{aviso.idAviso}"></h:outputText>
+						</p:column>
+															
+						<p:column headerText="Titulo">
+							<h:outputText value="#{aviso.titulo}"></h:outputText>
+						</p:column>
+												
+						<p:column headerText="Descripcion">
+							<h:outputText value="#{aviso.descripcion}"></h:outputText>
+						</p:column>
+						
+						<p:column headerText="Fecha Publicacion">
+							<h:outputText value="#{aviso.fechaPublicacion}"></h:outputText>
+						</p:column>
+						
+						<p:column headerText="Abogado que Publica">
+							<h:outputText value="#{aviso.user_idUser}"></h:outputText>
+						</p:column>																	
 					</p:dataTable>
 				</h:form>
 
@@ -96,14 +122,14 @@
 			</div>
         <div class="right_footer">
           <a href="index.xhtml">Inicio</a>
-          <a href="siteMap.xhtml">Mapa Sitio</a> 
+          <a href="siteMap.html">Mapa Sitio</a> 
           <a href="contact.xhtml">contactenos</a>
         </div>
 		</div>
 	</div>
 	<!--  end of main_container -->
 	<div align="center">
-		This template downloaded form <a
+		This template downloaded from <a
 			href="http://all-free-download.com/free-website-templates/">free website templates</a>
 	</div>
 </body>
